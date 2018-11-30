@@ -229,8 +229,8 @@ function draw() {
 
 
     //////////////////////////////////////      Statistika     //////////////////////////////////
-    if (frameCount % 500 === 0) {
-        console.log("dasas");
+    if (frameCount % 50 === 0) {
+        
 
         function changeView(stat) {
             var c = document.getElementById("xotakeriqanak");
