@@ -24,11 +24,11 @@ var kadr = {
     "gishatichiqanak": 0,
     "vorsordiqanak": 0,
     "dinoiqanak": 0,
-    "bomberiqanak": 0
+    "specialeventiqanak": 0
 
 
 };
-
+var specialevent = 0;
 var socket = io.connect('http://localhost:3000');
 
 
@@ -229,8 +229,8 @@ function draw() {
 
 
     //////////////////////////////////////      Statistika     //////////////////////////////////
-    if (frameCount % 50 === 0) {
-        
+    if (frameCount % 500 === 0) {
+
 
         function changeView(stat) {
             var c = document.getElementById("xotakeriqanak");
@@ -238,13 +238,13 @@ function draw() {
             var g = document.getElementById("gishatichiqanak");
             var v = document.getElementById("vorsordiqanak");
             var d = document.getElementById("dinoiqanak");
-            var b = document.getElementById("bomberiqanak");
+            var b = document.getElementById("specialeventiqanak");
             c.innerHTML = stat.xotakeriqanak;
             k.innerHTML = stat.xotiqanaky;
             g.innerHTML = stat.gishatichiqanak;
             v.innerHTML = stat.vorsordiqanak;
             d.innerHTML = stat.dinoiqanak;
-            b.innerHTML = stat.bomberiqanak;
+            b.innerHTML = stat.specialeventiqanak;
         }
 
         function handleSubmit(evt) {
@@ -253,7 +253,7 @@ function draw() {
             kadr.gishatichiqanak = gishatichArr.length;
             kadr.vorsordiqanak = hunterArr.length;
             kadr.dinoiqanak = dinoArr.length;
-            kadr.bomberiqanak = bomberArr.length;
+            kadr.specialeventiqanak = specialevent;
             changeView(kadr);
             socket.emit("send data", kadr);
 
@@ -272,12 +272,19 @@ function draw() {
 
 
 function mouseClicked() {
-    // console.log("asdfadsf")
+    specialevent++;
 
     var x = mouseX;
     var y = mouseY;
     var nx = Math.floor(x / side);
     var ny = Math.floor(y / side);
+    if (nx > n) {
+        nx = n;
+
+    }
+    else if (ny > n) {
+        ny = n;
+    }
     console.log(nx + ":" + ny);
     var br = new Bomber(nx, ny, 4)
     bomberArr.push(br);

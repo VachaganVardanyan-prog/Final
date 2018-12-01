@@ -13,7 +13,7 @@ socket.on("send stats", function (statistics) {
     //Պատրսատում ենք աղյուսակը
     statistics = JSON.parse(statistics);
     table.innerHTML = "";
-    tableHTML = "<tr><td>խոտակերի քանակ</td><td>խոտի քանակ</td><td>գիշատիչի քանակ</td><td>որսորդի քանակ</td><td>բոմբեռի քանակ</td><td>դինոի քանակ</td></tr>";
+    tableHTML = "<tr><td>խոտակերի քանակ</td><td>խոտի քանակ</td><td>գիշատիչի քանակ</td><td>որսորդի քանակ</td><td>դինոյի քանակ</td><td>հատուկ իրադարձության քանակ</td></tr>";
     for (var st of statistics) {
        
         for (var i in statistics) {
@@ -24,7 +24,7 @@ socket.on("send stats", function (statistics) {
             tableHTML += "<td>" + st.gishatichiqanak + "</td>";
             tableHTML += "<td>" + st.vorsordiqanak + "</td>";
             tableHTML += "<td>" + st.dinoiqanak + "</td>";
-            tableHTML += "<td>" + st.bomberiqanak + "</td>";
+            tableHTML += "<td>" + st.specialeventiqanak + "</td>";
             
             tableHTML += "</tr>";
         }
